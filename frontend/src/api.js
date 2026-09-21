@@ -10,7 +10,10 @@ async function request(path, options = {}) {
 export const api={
  signup:(name,email,password)=>request("/auth/signup",{method:"POST",body:JSON.stringify({name,email,password})}),
  login:(email,password)=>request("/auth/login",{method:"POST",body:JSON.stringify({email,password})}),
- classify:(item)=>request("/classify",{method:"POST",body:JSON.stringify({item})}),
+ classify:(item, image)=>request("/classify",{
+  method:"POST",
+  body:JSON.stringify({item, image})
+}),
  getHistory:()=>request("/history"), deleteHistoryItem:id=>request(`/history/${id}`,{method:"DELETE"}), clearHistory:()=>request("/history",{method:"DELETE"}),
  getImpact:()=>request("/impact"), getDashboard:()=>request("/dashboard"),
 };
